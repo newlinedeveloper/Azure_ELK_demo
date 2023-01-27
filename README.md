@@ -22,6 +22,20 @@ az aks get-credentials --resource-group "Veera-elk-demo" --name "DemoCluster"
 
 ```
 
+### Deploy sample voting app on the AKS cluster
+
+```
+# Create a namespace for the Voting App
+kubectl create namespace app
+
+# Create a namespace for the application
+kubectl apply -f ./azure-vote.yaml --namespace app
+
+# Check the status of the service
+kubectl get svc --namespace app
+
+```
+
 
 ### Installation the ELK stack using Helm on the AKS cluster
 
@@ -50,7 +64,6 @@ kubectl get pods --namespace logging
 
 # Check the status of the services
 kubectl get svc --namespace logging
-
 
 ```
 
