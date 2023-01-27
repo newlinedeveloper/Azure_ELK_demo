@@ -11,10 +11,14 @@ az login
 az account set --subscription="SUBSCRIPTION_ID"
 
 # Create a resource group for the AKS cluster
-az group create --name="myResourceGroup" --location="eastus"
+az group create --name="Veera-elk-demo" --location="eastus"
 
 # Create the AKS cluster
-az aks create --resource-group "myResourceGroup" --name "myAKSCluster" --node-count 2 --generate-ssh-keys
+az aks create --resource-group "Veera-elk-demo" --name "DemoCluster" --node-count 2 --generate-ssh-keys
+
+# Configure kubectl to connect to your Kubernetes cluster using the az aks get-credentials command
+
+az aks get-credentials --resource-group "Veera-elk-demo" --name "DemoCluster"
 
 ```
 
