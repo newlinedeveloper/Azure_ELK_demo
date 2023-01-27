@@ -64,5 +64,13 @@ kubectl get svc --namespace logging
 
 ```
 
+### Delete resources
+
+```
+# Delete resource group
+az group delete --name Veera-elk-demo --yes --no-wait
+
+```
+
 
 
