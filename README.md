@@ -7,9 +7,6 @@ Azure Kubernetes ELK stack demo
 # Login to Azure
 az login
 
-# Set the subscription you want to use
-az account set --subscription="SUBSCRIPTION_ID"
-
 # Create a resource group for the AKS cluster
 az group create --name="Veera-elk-demo" --location="eastus"
 
