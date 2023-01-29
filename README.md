@@ -33,7 +33,7 @@ helm repo update
 kubectl create namespace monitoring
 
 # Use Helm to install the Elasticsearch chart
-helm install elasticsearch elastic/elasticsearch --namespace monitoring
+helm install elasticsearch ./elasticsearch --namespace monitoring
 
 # Get username and password of Elastic search credentials
 kubectl get secrets --namespace=monitoring elasticsearch-master-credentials -ojsonpath='{.data.username}' | base64 -d
