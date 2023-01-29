@@ -39,11 +39,18 @@ helm install elasticsearch elastic/elasticsearch --namespace monitoring
 kubectl get secrets --namespace=monitoring elasticsearch-master-credentials -ojsonpath='{.data.username}' | base64 -d
 kubectl get secrets --namespace=monitoring elasticsearch-master-credentials -ojsonpath='{.data.password}' | base64 -d
 
+#check cluster health
+curl -u elastic:<password> https://localhost:9200 -k
+
+
 # Use Helm to install the filebeat
 helm install filebeat elastic/filebeat --namespace monitoring
 
 # Use Helm to install the metricbeat
 helm install metricbeat elastic/metricbeat --namespace monitoring
+
+# Get indices of beats
+https://localhost:9200/
 
 # Use Helm to install the Logstash chart
 helm install logstash elastic/logstash --namespace monitoring
