@@ -39,6 +39,10 @@ helm install elasticsearch elastic/elasticsearch --namespace monitoring
 kubectl get secrets --namespace=monitoring elasticsearch-master-credentials -ojsonpath='{.data.username}' | base64 -d
 kubectl get secrets --namespace=monitoring elasticsearch-master-credentials -ojsonpath='{.data.password}' | base64 -d
 
+
+# elastic searh port forwarding
+kubectl port-forward svc/elasticsearch-master 9200 -n monitoring
+
 #check cluster health
 curl -u elastic:<password> https://localhost:9200 -k
 
@@ -57,6 +61,9 @@ helm install logstash elastic/logstash --namespace monitoring
 
 # Use Helm to install the Kibana chart
 helm install kibana elastic/kibana --namespace monitoring
+
+#kibana dashboard port forwarding
+kubectl port-forward svc/kibana-kibana 5601 -n monitoring
 
 # Check the status of the pods
 kubectl get pods --namespace monitoring
