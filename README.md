@@ -35,6 +35,10 @@ kubectl create namespace monitoring
 # Use Helm to install the Elasticsearch chart
 helm install elasticsearch elastic/elasticsearch --namespace monitoring
 
+# Get username and password of Elastic search credentials
+kubectl get secrets --namespace=monitoring elasticsearch-master-credentials -ojsonpath='{.data.username}' | base64 -d
+kubectl get secrets --namespace=monitoring elasticsearch-master-credentials -ojsonpath='{.data.password}' | base64 -d
+
 # Use Helm to install the filebeat
 helm install filebeat elastic/filebeat --namespace monitoring
 
