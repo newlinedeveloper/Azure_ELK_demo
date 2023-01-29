@@ -14,22 +14,7 @@ az group create --name="Veera-elk-demo" --location="eastus"
 az aks create --resource-group "Veera-elk-demo" --name "DemoCluster" --node-count 2 --generate-ssh-keys
 
 # Configure kubectl to connect to your Kubernetes cluster using the az aks get-credentials command
-
 az aks get-credentials --resource-group "Veera-elk-demo" --name "DemoCluster"
-
-```
-
-### Deploy sample voting app on the AKS cluster
-
-```
-# Create a namespace for the Voting App
-kubectl create namespace app
-
-# Create a namespace for the application
-kubectl apply -f ./azure-vote.yaml --namespace app
-
-# Check the status of the service
-kubectl get svc --namespace app
 
 ```
 
@@ -45,24 +30,46 @@ helm repo add elastic https://helm.elastic.co
 helm repo update
 
 # Create a namespace for the ELK stack
-kubectl create namespace logging
+kubectl create namespace monitoring
 
 # Use Helm to install the Elasticsearch chart
-helm install elasticsearch elastic/elasticsearch --namespace logging
+helm install elasticsearch elastic/elasticsearch --namespace monitoring
+
+# Use Helm to install the filebeat
+helm install filebeat elastic/filebeat --namespace monitoring
+
+# Use Helm to install the metricbeat
+helm install metricbeat elastic/metricbeat --namespace monitoring
 
 # Use Helm to install the Logstash chart
-helm install logstash elastic/logstash --namespace logging
+helm install logstash elastic/logstash --namespace monitoring
 
 # Use Helm to install the Kibana chart
-helm install kibana elastic/kibana --namespace logging
+helm install kibana elastic/kibana --namespace monitoring
 
 # Check the status of the pods
-kubectl get pods --namespace logging
+kubectl get pods --namespace monitoring
 
 # Check the status of the services
-kubectl get svc --namespace logging
+kubectl get svc --namespace monitoring
 
 ```
+
+
+### Deploy sample voting app on the AKS cluster
+
+```
+# Create a namespace for the Voting App
+kubectl create namespace app
+
+# Create a namespace for the application
+kubectl apply -f ./azure-vote.yaml --namespace app
+
+# Check the status of the service
+kubectl get svc --namespace app
+
+```
+
 
 ### Delete resources
 
