@@ -10,7 +10,7 @@ https://learn.microsoft.com/en-us/cli/azure/install-azure-cli
 
 ### Kubectl installation
 
-https://docs.aws.amazon.com/eks/latest/userguide/install-kubectl.html
+https://kubernetes.io/docs/tasks/tools/
 
 ### Helm installation
 
