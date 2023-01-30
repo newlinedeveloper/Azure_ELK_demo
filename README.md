@@ -1,6 +1,22 @@
 # Azure_ELK_demo
 Azure Kubernetes ELK stack demo
 
+
+## Prerequisites
+
+### Azure Cli installation
+
+https://learn.microsoft.com/en-us/cli/azure/install-azure-cli
+
+### Kubectl installation
+
+https://docs.aws.amazon.com/eks/latest/userguide/install-kubectl.html
+
+### Helm installation
+
+https://helm.sh/docs/intro/install/
+
+
 ### Create Azure kubenetes cluster 
 
 ```
