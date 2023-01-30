@@ -50,13 +50,13 @@ curl -u elastic:<password> https://localhost:9200 -k
 # Use Helm to install the filebeat
 helm install filebeat elastic/filebeat --namespace monitoring
 
-# Use Helm to install the metricbeat
+# Use Helm to install the metricbeat (optional)
 helm install metricbeat elastic/metricbeat --namespace monitoring
 
 # Get indices of beats
-https://localhost:9200/
+https://localhost:9200/_cat/indices
 
-# Use Helm to install the Logstash chart
+# Use Helm to install the Logstash chart (optional)
 helm install logstash elastic/logstash --namespace monitoring
 
 # Use Helm to install the Kibana chart
